@@ -1,0 +1,49 @@
+{
+  "name": "pomodoro-app",
+  "version": "1.0.0",
+  "description": "Modern menu bar Pomodoro timer for macOS",
+  "main": "dist/main/main.js",
+  "type": "commonjs",
+  "scripts": {
+    "dev": "concurrently \"npm run dev:vite\" \"npm run dev:electron\"",
+    "dev:vite": "vite",
+    "dev:main": "tsc -p tsconfig.main.json --watch",
+    "dev:electron": "npm run build:main && wait-on http://localhost:5173 && electron .",
+    "build": "npm run build:main && npm run build:renderer && electron-builder",
+    "build:main": "tsc -p tsconfig.main.json",
+    "build:renderer": "vite build",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest"
+  },
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "@testing-library/jest-dom": "6.9.1",
+    "@testing-library/react": "16.3.2",
+    "@types/jest": "30.0.0",
+    "@types/node": "^20.10.0",
+    "@types/react": "^18.2.45",
+    "@types/react-dom": "^18.2.18",
+    "@vitejs/plugin-react": "^4.2.1",
+    "autoprefixer": "^10.4.16",
+    "concurrently": "^8.2.2",
+    "electron": "28.3.3",
+    "electron-builder": "^24.9.1",
+    "jsdom": "27.4.0",
+    "postcss": "^8.4.32",
+    "tailwindcss": "^3.4.0",
+    "typescript": "^5.3.3",
+    "vite": "^5.0.10",
+    "vitest": "4.0.18",
+    "wait-on": "^7.2.0"
+  },
+  "dependencies": {
+    "date-fns": "^3.0.6",
+    "electron-store": "^8.1.0",
+    "menubar": "^9.4.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "recharts": "^2.10.3"
+  }
+}
